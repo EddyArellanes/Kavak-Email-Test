@@ -24,9 +24,11 @@ lista. Cuántas direcciones diferentes reciben un email?
 const emails = [
  'test.email+alex@kavak.com',
  'test.e.mail+bob.cathy@kavak.com',
+ 'dev+tribilin@eddyarellanes.dev',
  'testemail+david@ka.vak.com',
  'dev.eddy+enriqueybeto@eddyarellanes.dev',
  'dev@eddyarellanes.dev', //Case when I don't send '.' and '+'
+ 'de.v@eddyarellanes.dev', //The same as previous must be deleted in 
  'heladodechocolate' //Case for No valid mails
 ]
 
@@ -57,8 +59,9 @@ var emailsUnicos = function(emails) {
 			? localName.split('+')[0] + domain 
 			: localName + domain		
 	})
-
-	return emailsFiltered
+	//Delete repeated values
+	const emailsOut = emailsFiltered.filter( (e, index) => emailsFiltered.indexOf( e) >= index)
+	return emailsOut
 }
 
 console.log( emailsUnicos(  emails))
